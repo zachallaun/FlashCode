@@ -7,9 +7,9 @@ from watchman import Watchman
 from countedconsole import CountedConsole
 
 def start():
-  
+
   # Assumes a folder called data/ in current dir
-  teacher = Teacher('data/flashq.txt')
+  teacher = Teacher('data/begtut.txt')
   # Assumes a folder called log/ in current dir
   sys.stdout = sys.stderr = sys.stdin = Watchman('flashlog.dat', teacher)
 
