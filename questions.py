@@ -53,12 +53,12 @@ class Teacher(object):
           matchdict = {'id':linematch.group('type')}
           status = 'task'
         else:
-          status = linematch.group('type').lower().split()[0]
+          status = linematch.group('type').lower()
       else:
         if status == 'task':
           matchdict[status] = matchdict.get(status, [])
           matchdict[status].append(line.strip()) if line.strip() != '' else None
-        elif line.strip() != '\n':
+        elif line.strip() != '':
           matchdict[status] = line.strip()
 
     questions.append(matchdict) if matchdict else None

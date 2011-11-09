@@ -11,7 +11,6 @@ class FlashCode(object):
     # Teacher/Question attrs
     self.teacher = teacher
     self.current = self.teacher.next()
-    self.mode = 'display'
 
     # Hooks
     self.changed = False
@@ -32,14 +31,26 @@ class FlashCode(object):
   
   def after_write(self):
     self._parse_log()
-    if self.changed:
-      pass
+    if self.changed and self.current:
+      if self._validated():
+        self.current = self.teacher.next()
+        self.sprint('\n'.join(self.current.task))
       # How I think I want to impliment this: the class has an attribute
       # self.currentq, which is a question object. Every time self.changed is True,
       # I attempt to match self.currentq.in to _last_input_block() and self.currentq.out
       # to self.output[-1]. If they match, the question has completed, and I call something
       # like self.nextquestion(), which gets the next currentq and prints the task.
   
+  def _validated(self):
+    validi = True
+    valido = True
+    # if 'i' in self.current.test:
+      # validi = True if self.current.i.match(self.input[-1]) else False
+    if 'o' in self.current.test:
+      valido = True if self.current.o.match(self.output[-1]) else False
+    return validi and valido
+  
+  # Bugged and shitty
   def _last_input_block(self):
     """Returns the last block of input submitted. An interpreter code block
     begins with a '>>>' prompt followed by 0 or more '...' prompts."""
@@ -68,7 +79,7 @@ class FlashCode(object):
         fullmatch = self.full_prompt.match(line)
         emptymatch = self.empty_prompt.match(line)
 
-        if 0 <= i <= (5 + len(self.teacher.q(0).task)): # Skip banner
+        if 0 <= i <= (4 + len(self.teacher.q(0).task)): # Skip banner
           pass
         elif fullmatch:
           # Append in the format '(1)>>> input' to keep internal

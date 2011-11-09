@@ -5,7 +5,7 @@ like "Zach".
 --> Input
 r"(\"|').+(\"|')"
 --> Output
-r"('.+')|(\".+\")"
+r"('\w+')|(\"w+\")"
 --> Test
 io
 
@@ -35,7 +35,7 @@ io
 Try playing around some more. You can use * for multiplication and /
 for division.
 --> Input
-r"\d+.*(\*|/).*\d+"
+r"\d+\s*(\*|\/)\s*\d+"
 --> Output
 r"\d+\.*(\d+)*"
 --> Test
