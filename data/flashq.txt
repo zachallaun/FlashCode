@@ -5,7 +5,7 @@ like "Zach".
 --> Input
 r"(\"|').+(\"|')"
 --> Output
-r"('\w+')|(\"w+\")"
+r"('[a-zA-Z]+')|(\"[a-zA-Z]\")"
 --> Test
 io
 

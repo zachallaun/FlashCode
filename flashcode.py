@@ -34,12 +34,10 @@ class FlashCode(object):
     if self.changed and self.current:
       if self._validated():
         self.current = self.teacher.next()
-        self.sprint('\n'.join(self.current.task))
-      # How I think I want to impliment this: the class has an attribute
-      # self.currentq, which is a question object. Every time self.changed is True,
-      # I attempt to match self.currentq.in to _last_input_block() and self.currentq.out
-      # to self.output[-1]. If they match, the question has completed, and I call something
-      # like self.nextquestion(), which gets the next currentq and prints the task.
+        if self.current:
+          self.sprint('\n'.join(self.current.task))
+        else:
+          self.sprint("Congrats! You've finished the tutorial. Keep playing around in the interpreter!\n") 
   
   def _validated(self):
     validi = True
