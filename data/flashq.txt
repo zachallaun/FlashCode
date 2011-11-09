@@ -1,0 +1,50 @@
+--> Task 1
+">>>" is your Python prompt. This means the Python interpreter is 
+ready to accept code. Try typing your name surrounded by quotes, 
+like "Zach".
+--> Input
+r"(\"|').+(\"|')"
+--> Output
+r"('.+')|(\".+\")"
+--> Test
+io
+
+--> Task 2 
+See that? Python returned your name to you. What you created was 
+a string, which is a series of characters surrounded by single or
+double quotes. Your name has a length, too. Try passing your name to
+the function len(), as in len("name").
+--> Input
+r"len\((\"|').+(\"|')\)"
+--> Output
+r"\d+"
+--> Test
+io
+
+--> Task 3
+Let's do some math through programming. To calculate 2+2, for instance,
+just type 2+2. Try it out.
+--> Input
+r"2.*\+.*2"
+--> Output
+r"4"
+--> Test
+io
+
+--> Task 4
+Try playing around some more. You can use * for multiplication and /
+for division.
+--> Input
+r"\d+.*(\*|/).*\d+"
+--> Output
+r"\d+\.*(\d+)*"
+--> Test
+io
+
+--> Task 5
+There are some things you can't do in the console, though. Try typing
+your name without any quotes around it.
+--> Output
+r"NameError.*"
+--> Test
+o
