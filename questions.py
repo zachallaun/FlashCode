@@ -7,8 +7,8 @@ class Question(object):
     super(Question, self).__init__()
     self.id   = qa['id']
     self.task = qa['task']
-    self.i    = qa['input']
-    self.o    = qa['output']
+    self.i    = re.compile(eval(qa['input']))
+    self.o    = re.compile(eval(qa['output']))
     self.test = qa['test']
 
 

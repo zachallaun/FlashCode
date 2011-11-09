@@ -1,9 +1,11 @@
 import code
 
 class CountedConsole(code.InteractiveConsole):
-  """Used in the exact same way as code.InteractiveConsole.
+  """
+  Used in the exact same way as code.InteractiveConsole.
   The self.raw_input() method has been redefined to stylize the prompt
-  and count lines."""
+  and count lines.
+  """
   
   def __init__(self):
     code.InteractiveConsole.__init__(self)

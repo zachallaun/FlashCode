@@ -5,8 +5,15 @@ class FlashCode(object):
   
   def __init__(self, log_fname, teacher):
     super(FlashCode, self).__init__()
+    # Logging attrs
     self.logname = log_fname
+
+    # Teacher/Question attrs
     self.teacher = teacher
+    self.current = self.teacher.next()
+    self.mode = 'display'
+
+    # Hooks
     self.changed = False
     self.reset_io()
     self.empty_prompt = re.compile(r".+\(\d+\).+(>>>|\.\.\.)\s*")
@@ -61,7 +68,7 @@ class FlashCode(object):
         fullmatch = self.full_prompt.match(line)
         emptymatch = self.empty_prompt.match(line)
 
-        if 0 <= i <= 3: # Skip banner
+        if 0 <= i <= (5 + len(self.teacher.q(0).task)): # Skip banner
           pass
         elif fullmatch:
           # Append in the format '(1)>>> input' to keep internal

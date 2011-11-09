@@ -3,8 +3,7 @@ from flashcode import FlashCode
 
 class Watchman(object):
   """
-  Watchman sets up full logging to an external file and triggers
-  post-input hooks.
+  Watchman sets up logging to an external file and triggers hooks.
 
   Usage:
   sys.stdout = sys.stderr = sys.stdin = Watchman(log_fname, mode)

@@ -2,6 +2,10 @@
 Welcome to FlashCode (FC), the interactive Python learning environment.
 =======================================================================
 
-[92m(1)[0m>>> "HELLO"
-'HELLO'
+[96m(FC)[0m ">>>" is your Python prompt. This means the Python interpreter is
+ready to accept code. Try typing your name surrounded by quotes,
+like "Zach".
+
+[92m(1)[0m>>> "hello"
+'hello'
 [92m(2)[0m>>> 
