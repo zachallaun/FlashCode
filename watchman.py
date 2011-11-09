@@ -10,10 +10,10 @@ class Watchman(object):
   sys.stdout = sys.stderr = sys.stdin = Watchman(log_fname, mode)
   """
   
-  def __init__(self, log_fname, mode='w'):
+  def __init__(self, log_fname, teacher, mode='w'):
     self.log      = open(log_fname, mode)
     self.lname    = log_fname
-    self.flash    = FlashCode(log_fname) # implements after_write hook
+    self.flash    = FlashCode(log_fname, teacher) # implements after_write hook
 
   def __del__(self):
     # Restore sin, so, se

@@ -3,9 +3,10 @@ import re
 
 class FlashCode(object):
   
-  def __init__(self, log_fname):
+  def __init__(self, log_fname, teacher):
     super(FlashCode, self).__init__()
     self.logname = log_fname
+    self.teacher = teacher
     self.changed = False
     self.reset_io()
     self.empty_prompt = re.compile(r".+\(\d+\).+(>>>|\.\.\.)\s*")

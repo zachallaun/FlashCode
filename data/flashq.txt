@@ -44,6 +44,8 @@ io
 --> Task 5
 There are some things you can't do in the console, though. Try typing
 your name without any quotes around it.
+--> Input
+r"\w+"
 --> Output
 r"NameError.*"
 --> Test
