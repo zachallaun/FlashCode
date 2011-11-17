@@ -8,7 +8,8 @@ from countedconsole import CountedConsole
 
 def start():
   welcome = "Welcome to FlashCode (FC), the interactive Python learning environment."
-  print("{0}\n{1}\n{2}\n".format('='*len(welcome), cyan(welcome), '='*len(welcome)))
+  toquit = "\nType 'quit' in the module menu to quit at any time."
+  print("{0}\n{1}{2}\n{3}\n".format('='*len(welcome), cyan(welcome), toquit, '='*len(welcome)))
   
   while True:
     print("Please choose your module by inputting the number below.\n")
@@ -42,6 +43,8 @@ def get_module(modules):
           break
         except IndexError:
           print("Sorry, that module isn't valid.")
+      elif 'q' in choice.lower():
+        quit()
       else:
         print("Didn't catch that.")
   return module
