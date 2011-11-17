@@ -52,6 +52,8 @@ def parse_manifest(fname):
   modules = []
   with open(fname, 'r') as f:
     for line in f:
+      if re.match(r"^#.*", line):
+        pass
       mm = modulematch.match(line)
       fm = filematch.match(line)
       if mm:

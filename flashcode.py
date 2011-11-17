@@ -17,7 +17,7 @@ class FlashCode(object):
     self.reset_io()
     self.empty_prompt = re.compile(r".+\(\d+\).+(>>>|\.\.\.)\s*")
     self.full_prompt  = re.compile(r""" .+(\(\d+\))           # group 1, matches '(#)'
-                                        .+((>>>|\.\.\.)\s.+)  # group 2, matches prompt and input
+                                        .+(>>>|\.\.\.)\s(.+)  # group 2, matches input
                                     """, re.X)
   
   def reset_io(self):
@@ -37,14 +37,14 @@ class FlashCode(object):
         if self.current:
           self.sprint('\n'.join(self.current.task))
         else:
-          self.sprint("Congrats! You've finished this module.\Press CTL-D if you'd like to choose another.\n") 
+          self.sprint("Congrats! You've finished this module. Press CTL-D if you'd like to choose another.") 
   
   def _validated(self):
     validi = True
     valido = True
-    # if 'i' in self.current.test:
-      # validi = True if self.current.i.match(self.input[-1]) else False
-    if 'o' in self.current.test:
+    if 'i' in self.current.test and self.input:
+      validi = True if self.current.i.match(self.input[-1]) else False
+    if 'o' in self.current.test and self.output:
       valido = True if self.current.o.match(self.output[-1]) else False
     return validi and valido
   
@@ -80,9 +80,7 @@ class FlashCode(object):
         if 0 <= i <= (4 + len(self.teacher.q(0).task)): # Skip banner
           pass
         elif fullmatch:
-          # Append in the format '(1)>>> input' to keep internal
-          # representation of input clean
-          self.input.append(fullmatch.group(1)+fullmatch.group(2))
+          self.input.append(fullmatch.group(3))
         elif emptymatch:
           pass
         else:

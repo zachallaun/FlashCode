@@ -1,0 +1,56 @@
+--> Task 1
+Previously, you typed your name as a string, but didn't save it.
+Variables allow you to save data for use later. Let's call your name
+myName. Try setting the variable to your name by typing myName = "Name".
+Then, print your variable by passing it to the print() function, as in
+print(variable).
+--> Input
+r"print\(myName\)"
+--> Output
+r"\w+"
+--> Test
+i
+
+--> Task 2
+Now your name, as a string, is stored in the variable myName. Make
+sure by typing myName.
+--> Input
+r"myName"
+--> Output
+r"'\w+'"
+--> Test
+io
+
+--> Task 3
+Now you know how to set variables. Set a variable called lastName
+to your last name. Print it.
+--> Input
+r"print\(lastName\)"
+--> Output
+r"\w+"
+--> Test
+i
+
+--> Task 4
+lastName is a variable, but the string "Name" is a literal. You can
+treat variables the same way you treat literals. Earlier you found the
+length of your name, the string. Find the length of your lastName, 
+the variable.
+--> Input
+r"len\(lastName\)"
+--> Output
+r"\d+"
+--> test
+io
+
+--> Task 5
+Keep in mind, a variable's case matters. myName and MyName are not the
+same variable. Try creating a variable fullName using myName and lastName.
+Then, print fullName.
+Hint: You can add (using +) strings to concatenate, or merge, them.
+--> Input
+r"print\(fullName\)"
+--> Output
+r".*"
+--> Test
+io

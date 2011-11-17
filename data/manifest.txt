@@ -2,13 +2,13 @@
 --> data/begtut.txt
 (2) Variables
 --> data/variables.txt
-(3) Numbers and Strings
---> data/numstr.txt
-(4) If
---> data/if.txt
-(5) Lists 
---> data/lists.txt
-(6) For
---> data/for.txt
-(7) While
---> data/while.txt
+# (3) Numbers and Strings
+# --> data/numstr.txt
+# (4) If
+# --> data/if.txt
+# (5) Lists 
+# --> data/lists.txt
+# (6) For
+# --> data/for.txt
+# (7) While
+# --> data/while.txt
