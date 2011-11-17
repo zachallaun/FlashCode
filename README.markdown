@@ -2,7 +2,7 @@
 ### Interactive Python Tutorial
 
 #### Usage
-    python3.2 start.py
+    $ python3.2 start.py
 
 #### Extensibility
 Modules live in `data/`, and are declared in `data/manifest.txt`. Format your manifest module declarations as seen in the file. Manifest supports full-line comments with `#`.
