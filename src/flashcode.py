@@ -2,9 +2,13 @@ import sys
 import re
 
 class FlashCode(object):
-  """Handles interactive tutorial/module through hooks passed from a Watchman and
-  from input/output validation. Requires a log_filename (updated by a Watchman) for
-  validation. Validates through a Teacher."""
+  """
+  Handles interactive tutorial/module through hooks passed from a Watchman and
+  from input/output validation. 
+
+  Requires a log_filename (updated by a Watchman) for validation.
+  Requires a Teacher to handle question generation.
+  """
 
   def __init__(self, log_fname, teacher):
     super(FlashCode, self).__init__()
@@ -110,21 +114,28 @@ class FlashCode(object):
     # Validate change
     self.changed = True if self.output != oldout else False
 
-  # Bugged and shitty. Currently unused.
+  # Currently unused. Could be useful for multi-line validations.
   def _last_input_block(self):
     """Returns the last block of input submitted. An interpreter code block
     begins with a '>>>' prompt followed by 0 or more '...' prompts."""
-    prompt = re.compile(r"\(\d+\)(>>>|...)\s.+")
+
     block = []
 
     if self.input:
-      xinput = list(self.input)
-      for i in range(len(xinput)-1, -1, -1):
-        match = prompt.match(xinput[i])
-        if match:
-          if match.group(1) == '>>>':
-            block.insert(0, xinput[i])
-            return block
-          elif match.group(1) == '...':
-            block.insert(0, xinput.pop(i))
+
+      # We want a reversed list of input, so that we're seeing the most recent first
+      xinput = list(reversed(self.input))
+      for line in xinput:
+        
+        # Ignore empty prompts
+        if self.full_prompt.match(line):
+          
+          # '...' in the prompt means it's part of the block.
+          # Return the first '>>>' found.
+          if '...' in line:
+            block.insert(0, line)
+          elif '>>>' in line:
+            block.insert(0, line)
+            break
+    
     return block

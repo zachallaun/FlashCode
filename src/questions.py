@@ -13,8 +13,10 @@ class Question(object):
 
 
 class Teacher(object):
-  """Accepts a question_filename, parses the file, and returns a Teacher, which
-  acts similarly to a generator object, returning questions through calls to .next()"""
+  """
+  Accepts a question_filename, parses the file, and returns a Teacher, which
+  acts similarly to a generator object, returning questions through calls to Teacher.next()
+  """
 
   def __init__(self, q_fname):
     self.questions = [Question(q) for q in self._read_questions(q_fname)]
