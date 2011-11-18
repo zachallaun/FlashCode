@@ -31,13 +31,13 @@ class FlashCode(object):
   
   def after_write(self):
     self._parse_log()
-    if self.changed and self.current:
-      if self._validated():
-        self.current = self.teacher.next()
-        if self.current:
-          self.sprint('\n'.join(self.current.task))
-        else:
-          self.sprint("Congrats! You've finished this module. Press CTL-D if you'd like to choose another.") 
+    if (self.changed and self.current) and self._validated():
+      # if self._validated():
+      self.current = self.teacher.next()
+      if self.current:
+        self.sprint('\n'.join(self.current.task))
+      else:
+        self.sprint("Congrats! You've finished this module. Press CTL-D if you'd like to choose another.") 
   
   def _validated(self):
     validi = True

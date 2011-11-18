@@ -1,10 +1,14 @@
+# Python Beginner's Tutorial
+
 --> Task 1
 ">>>" is your Python prompt. This means the Python interpreter is 
 ready to accept code. Try typing your name surrounded by quotes, 
 like "Zach".
 --> Input
+# 'Zach' or "Zach"
 r"(\"|').+(\"|')"
 --> Output
+# 'Zach' or "Zach"
 r"('[a-zA-Z]+')|(\"[a-zA-Z]\")"
 --> Test
 io
@@ -15,8 +19,10 @@ a string, which is a series of characters surrounded by single or
 double quotes. Your name has a length, too. Try passing your name to
 the function len(), as in len("name").
 --> Input
+# len("Zach") or len('Zach')
 r"len\((\"|').+(\"|')\)"
 --> Output
+# 4
 r"\d+"
 --> Test
 io
@@ -25,8 +31,10 @@ io
 Let's do some math through programming. To calculate 2+2, for instance,
 just type 2+2. Try it out.
 --> Input
-r"2.*\+.*2"
+# 2 + 2 or 2+2
+r"2\s*\+\s*2"
 --> Output
+# 4
 r"4"
 --> Test
 io
@@ -35,8 +43,10 @@ io
 Try playing around some more. You can use * for multiplication and /
 for division.
 --> Input
+# 2/3 or 4 * 5 or 2/3 * 5
 r"\d+\s*(\*|\/)\s*\d+"
 --> Output
+# an int or float
 r"\d+\.*(\d+)*"
 --> Test
 io
@@ -45,8 +55,10 @@ io
 There are some things you can't do in the console, though. Try typing
 your name without any quotes around it.
 --> Input
+# zach
 r"\w+"
 --> Output
+# A NameError
 r"NameError.*"
 --> Test
 o

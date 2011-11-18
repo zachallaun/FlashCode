@@ -16,8 +16,7 @@ class Teacher(object):
   """Manages Question objects."""
 
   def __init__(self, q_fname):
-    qs = self._read_questions(q_fname)
-    self.questions = self._gen_questions(qs)
+    self.questions = [Question(q) for q in self._read_questions(q_fname)]
     self.ison = 0
 
   def q(self, index):
@@ -58,12 +57,11 @@ class Teacher(object):
         if status == 'task':
           matchdict[status] = matchdict.get(status, [])
           matchdict[status].append(line.strip()) if line.strip() != '' else None
-        elif line.strip() != '':
+        # elif line.strip() != '':
+        elif not re.match(r"\n|^#.*", line):
           matchdict[status] = line.strip()
 
     questions.append(matchdict) if matchdict else None
     file.close()
     return questions
 
-  def _gen_questions(self, qs):
-    return [Question(q) for q in qs]
