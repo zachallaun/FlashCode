@@ -8,8 +8,7 @@ from countedconsole import CountedConsole
 
 def start():
   welcome = "Welcome to FlashCode (FC), the interactive Python learning environment."
-  toquit = "\nType 'quit' in the module menu to quit at any time."
-  print("{0}\n{1}{2}\n{3}\n".format('='*len(welcome), cyan(welcome), toquit, '='*len(welcome)))
+  print("{0}\n{1}\n{2}\n".format('='*len(welcome), cyan(welcome), '='*len(welcome)))
   
   while True:
     print("Please choose your module by inputting the number below.\n")
@@ -19,13 +18,12 @@ def start():
       print(module[0], end='')
     print()
 
-    module = get_module(modules)
+    title, datapath = get_module(modules)
 
-    teacher = Teacher(module[1])
+    teacher = Teacher(datapath)
     sys.stdout = sys.stderr = sys.stdin = Watchman('flashlog.dat', teacher)
 
     # FlashCode banner and initial prompt
-    title       = module[0]
     first_q     = teacher.q(0)
     first_task  = '\n{0} '.format(cyan("(FC)")) + '\n'.join(first_q.task)
     banner      = "{0}\n{1}{2}\n{3}\n".format('='*len(title), cyan(title), '='*len(title), first_task)
@@ -34,13 +32,13 @@ def start():
     console.interact(banner)
 
 def get_module(modules):
-  while True:
-      choice = input("Module number: ")
+  module = None
+  while not module:
+      choice = input("Module number (or 'q' to quit): ")
       if re.match(r"\d+", choice):
         try:
           choice = int(choice)
           module = modules[choice-1]
-          break
         except IndexError:
           print("Sorry, that module isn't valid.")
       elif 'q' in choice.lower():

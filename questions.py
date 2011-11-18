@@ -28,9 +28,13 @@ class Teacher(object):
   def next(self):
     self.ison += 1
     return self.q(self.ison - 1)
+  
+  def reset(self):
+    self.ison = 0
 
   def _read_questions(self, q_fname):
-    """Reads a file composed of Tasks with Answers and Hints, and returns a dictionary."""
+    """Reads a question module composed of tasks, input and output
+    validation, and testing considerations. Returns a list of dictionaries."""
     read = re.compile(r"""
                       \-\->\s*          # Match an indicator
                       (?P<type>         # Allow access by .group('type')
@@ -39,10 +43,10 @@ class Teacher(object):
                       ((O|o)utput)|     # Match "Output", upper/lower case, or
                       ((T|t)est))       # Match "Test"
                       """, re.VERBOSE)
-    file = open(q_fname, 'r', encoding='utf-8')
     questions = []
     matchdict = {}
     status = None
+    file = open(q_fname, 'r', encoding='utf-8')
 
     for line in file:
       linematch = read.search(line)
@@ -57,7 +61,6 @@ class Teacher(object):
         if status == 'task':
           matchdict[status] = matchdict.get(status, [])
           matchdict[status].append(line.strip()) if line.strip() != '' else None
-        # elif line.strip() != '':
         elif not re.match(r"\n|^#.*", line):
           matchdict[status] = line.strip()
 

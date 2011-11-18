@@ -37,7 +37,7 @@ class FlashCode(object):
       if self.current:
         self.sprint('\n'.join(self.current.task))
       else:
-        self.sprint("Congrats! You've finished this module. Press CTL-D if you'd like to choose another.") 
+        self.sprint("Congrats! You've finished this module.\nPress CTRL-d to choose another when you're ready.") 
   
   def _validated(self):
     validi = True
