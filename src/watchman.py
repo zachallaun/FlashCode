@@ -1,5 +1,5 @@
 import sys
-from fc.flashcode import FlashCode
+from src.flashcode import FlashCode
 
 class Watchman(object):
   """

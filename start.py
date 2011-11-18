@@ -2,9 +2,9 @@ import sys
 import re
 import code
 
-from fc.questions import Teacher
-from fc.watchman import Watchman
-from fc.countedconsole import CountedConsole
+from src.questions import Teacher
+from src.watchman import Watchman
+from src.countedconsole import CountedConsole
 
 def start():
   welcome = "Welcome to FlashCode (FC), the interactive Python learning environment."
