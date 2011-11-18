@@ -13,6 +13,9 @@ class CountedConsole(code.InteractiveConsole):
   
   def raw_input(self, prompt=''):
     self.linecount += 1
-    color = "\033[92m" if ">" in prompt else "\033[93m"  # Green if ">>>", yellow if "..."
+
+    # Prompt color: green if ">>>", yellow if "..."
+    color = "\033[92m" if ">" in prompt else "\033[93m"
     pre = "{0}({1})\033[0m".format(color, str(self.linecount))
+
     return input(pre + prompt)
