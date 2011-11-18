@@ -1,6 +1,7 @@
 import sys
 import re
 import code
+import os
 
 from src.questions import Teacher
 from src.watchman import Watchman
@@ -8,10 +9,10 @@ from src.countedconsole import CountedConsole
 
 def start():
   welcome = "Welcome to FlashCode (FC), the interactive Python learning environment."
-  print("{0}\n{1}\n{2}\n".format('='*len(welcome), cyan(welcome), '='*len(welcome)))
-  
+  print("{0}\n{1}\n{2}".format('='*len(welcome), cyan(welcome), '='*len(welcome)))
+
   while True:
-    print("Please choose your module by inputting the number below.\n")
+    print("\nPlease choose your module by inputting the number below.\n")
     modules = parse_manifest('data/manifest.txt')
 
     for module in modules:
@@ -24,12 +25,23 @@ def start():
     sys.stdout = sys.stderr = sys.stdin = Watchman('flashlog.dat', teacher)
 
     # FlashCode banner and initial prompt
-    first_q     = teacher.q(0)
-    first_task  = '\n{0} '.format(cyan("(FC)")) + '\n'.join(first_q.task)
+    first_task  = '\n{0} '.format(cyan("(FC)")) + '\n'.join(teacher.q(0).task)
     banner      = "{0}\n{1}{2}\n{3}\n".format('='*len(title), cyan(title), '='*len(title), first_task)
 
     console = CountedConsole()
     console.interact(banner)
+
+    cleanup()
+
+def cleanup():
+  try:
+    os.remove('flashlog.dat')
+  except OSError:
+    pass
+  
+  sys.stdout = sys.__stdout__
+  sys.stderr = sys.__stderr__
+  sys.stdin = sys.__stdin__
 
 def get_module(modules):
   module = None

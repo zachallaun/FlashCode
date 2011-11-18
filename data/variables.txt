@@ -5,7 +5,7 @@ myName. Try setting the variable to your name by typing myName = "Name".
 Then, print your variable by passing it to the print() function, as in
 print(variable).
 --> Input
-r"print\(myName\)"
+r"print.*myName.*"
 --> Output
 r"\w+"
 --> Test
@@ -33,7 +33,7 @@ i
 
 --> Task 4
 lastName is a variable, but the string "Name" is a literal. You can
-treat variables the same way you treat literals. Earlier you found the
+treat variables the same way you treat literals. In module 1 you found the
 length of your name, the string. Find the length of your lastName, 
 the variable.
 --> Input
