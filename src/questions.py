@@ -69,6 +69,10 @@ class Teacher(object):
               qdict = {'id': line.split()[-1]}
               question = []
               state = Q
+            elif tag == "I":
+              state = I
+            elif tag == "O":
+              state = O
 
           elif state == Q:
             if tag == "N":
@@ -76,6 +80,9 @@ class Teacher(object):
             elif tag == "I":
               qdict['task'] = question
               state = I
+            elif tag == "O":
+              qdict['task'] = question
+              state = O
             elif tag == "Q":
               question = []
           
@@ -83,7 +90,7 @@ class Teacher(object):
             if tag == "N":
               qdict['input'] = line
               qdict['test'] = qdict.get('test', '') + 'i'
-              state = O
+              state = N
           
           else: # state is O
             if tag == "N":

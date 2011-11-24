@@ -4,12 +4,12 @@
 ">>>" is your Python prompt. This means the Python interpreter is 
 ready to accept code. Try typing your name surrounded by quotes, 
 like "Zach".
---> Input
-# 'Zach' or "Zach"
-r"(\"|').+(\"|')"
 --> Output
 # 'Zach' or "Zach"
 r"('[a-zA-Z]+')|(\"[a-zA-Z]\")"
+--> Input
+# 'Zach' or "Zach"
+r"(\"|').+(\"|')"
 
 --> Task 2 
 See that? Python returned your name to you. What you created was 
