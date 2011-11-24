@@ -25,17 +25,14 @@ class Watchman(object):
     self.log.flush()
     sys.__stdout__.write(data)
     sys.__stdout__.flush()
-    
     # Triggers input/output validation hook
     self.flash.after_write()
 
   def readline(self):
     """Called when input is accepted from stdin"""
-
     s = sys.__stdin__.readline()
     self.log.write(s)
     self.log.flush()
-    
     return s
 
   def flush(self):
