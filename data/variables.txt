@@ -8,8 +8,6 @@ print(variable).
 r"print.*myName.*"
 --> Output
 r"\w+"
---> Test
-i
 
 --> Task 2
 Now your name, as a string, is stored in the variable myName. Make
@@ -18,8 +16,6 @@ sure by typing myName.
 r"myName"
 --> Output
 r"'\w+'"
---> Test
-io
 
 --> Task 3
 Now you know how to set variables. Set a variable called lastName
@@ -28,8 +24,6 @@ to your last name. Print it.
 r"print\(lastName\)"
 --> Output
 r"\w+"
---> Test
-i
 
 --> Task 4
 lastName is a variable, but the string "Name" is a literal. You can
@@ -40,8 +34,6 @@ the variable.
 r"len\(lastName\)"
 --> Output
 r"\d+"
---> test
-io
 
 --> Task 5
 Keep in mind, a variable's case matters. myName and MyName are not the
@@ -52,5 +44,3 @@ Hint: You can add (using +) strings to concatenate, or merge, them.
 r"print\(fullName\)"
 --> Output
 r".*"
---> Test
-io

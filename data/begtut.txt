@@ -10,8 +10,6 @@ r"(\"|').+(\"|')"
 --> Output
 # 'Zach' or "Zach"
 r"('[a-zA-Z]+')|(\"[a-zA-Z]\")"
---> Test
-io
 
 --> Task 2 
 See that? Python returned your name to you. What you created was 
@@ -24,8 +22,6 @@ r"len\((\"|').+(\"|')\)"
 --> Output
 # 4
 r"\d+"
---> Test
-io
 
 --> Task 3
 You can also do math through programming. To calculate 2+2, for instance,
@@ -36,8 +32,6 @@ r"2\s*\+\s*2"
 --> Output
 # 4
 r"4"
---> Test
-io
 
 --> Task 4
 Try playing around some more. You can use * for multiplication and /
@@ -48,8 +42,6 @@ r"\d+\s*(\*|\/)\s*\d+"
 --> Output
 # an int or float
 r"\d+\.*(\d+)*"
---> Test
-io
 
 --> Task 5
 Some of the math operators (like +, for instance) can be used in other
@@ -58,8 +50,6 @@ ways as well. Multiply your name as a string by 5, as in: "Zach" * 5
 r"('|\")(\w+)('|\")\s*\*\s*5"
 --> Output
 r"('|\")(\w+){5}('|\")"
---> Test
-io
 
 --> Task 6
 There are some things you can't do in the console, though. Try typing
@@ -70,8 +60,6 @@ r"\w+"
 --> Output
 # A NameError
 r"NameError.*"
---> Test
-o
 
 --> Task 7
 Take a look at that error. Errors may look complicated and intimidating,
@@ -83,5 +71,3 @@ a number as if it were a string.
 r"len\(\d+\.?\d*\)"
 --> Output
 r"TypeError.*"
---> Test
-io
