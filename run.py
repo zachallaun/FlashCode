@@ -6,6 +6,7 @@ import os
 from src.questions import Teacher
 from src.watchman import Watchman
 from src.countedconsole import CountedConsole
+from src.str_format import *
 
 """This script handles interpreter setup, cleanup, and continuation."""
 
@@ -110,14 +111,6 @@ def parse_manifest(fname):
         modules[-1].append(fm.group('path'))
     
   return modules
-
-###
-# Helper Functions
-###
-def cyan(string):
-  """Accepts a string, and returns the same string surrounded by
-  the unicode strings for cyan and reset."""
-  return '\033[96m' + string + '\033[0m'
 
 ###
 # Run
