@@ -5,11 +5,11 @@ class Question(object):
 
   def __init__(self, qa):
     super(Question, self).__init__()
-    self.id   = qa['id']
+    self.id = qa['id']
     self.task = qa['task']
-    self.i    = re.compile(eval(qa['input']))
-    self.o    = re.compile(eval(qa['output']))
     self.test = qa['test']
+    self.i = re.compile(eval(qa['input'])) if 'input' in qa else None
+    self.o = re.compile(eval(qa['output'])) if 'output' in qa else None
 
 
 class Teacher(object):
@@ -60,12 +60,14 @@ class Teacher(object):
     try:
       with open(q_fname) as file:
         state = N
+        qdict = {}
         for line in file:
           line = line.strip()
           tag = self._get_tag(line, read)
 
           if state == N:
             if tag == "Q":
+              Questions.append(qdict) if qdict else None
               qdict = {'id': line.split()[-1]}
               question = []
               state = Q
@@ -91,14 +93,19 @@ class Teacher(object):
               qdict['input'] = line
               qdict['test'] = qdict.get('test', '') + 'i'
               state = N
+            elif tag == "O":
+              state = O
           
           else: # state is O
             if tag == "N":
               qdict['output'] = line
               qdict['test'] = qdict.get('test', '') + 'o'
-              Questions.append(qdict)
               state = N
-
+            elif tag == I:
+              state = I
+      
+      Questions.append(qdict) # Append final dict
+      
     except IOError:
       print("No such file as '{0}'.".format(q_fname))
     return Questions
@@ -118,67 +125,6 @@ class Teacher(object):
     else:
       tag = "N"
     return tag
-
-  # def _read_questions(self, q_fname):
-  #   """Reads a question module composed of tasks, input and output
-  #   validation, and testing considerations. Returns a list of dictionaries."""
-
-  #   read = re.compile(r"""
-  #                     \-\->\s*          # Match an indicator
-  #                     (?P<type>         # Allow access by .group('type')
-  #                     ((T|t)ask\s*\d+)| # Match "Task 12", upper/lower case, or
-  #                     ((I|i)nput)|      # Match "Input", or
-  #                     ((O|o)utput)|     # Match "Output", upper/lower case, or
-  #                     ((T|t)est))       # Match "Test"
-  #                     """, re.VERBOSE)
-
-  #   questions = []
-  #   matchdict = {}
-  #   key = None
-
-  #   file = open(q_fname, 'r', encoding='utf-8')
-
-  #   for line in file:
-
-  #     # If the read pattern matches, linematch will have a group('type')
-  #     # that dicates the current element of the question
-  #     linematch = read.search(line)
-
-  #     if linematch:
-
-  #       # If the type is 'task', we've accessed a new question
-  #       if 'task' in linematch.group('type').lower():
-
-  #         # Indicate that we're about to receive the task
-  #         key = 'task'
-
-  #         # Append to our questions list the previous question dict,
-  #         # if it exists, and instantiate a new one
-  #         questions.append(matchdict) if matchdict else None
-  #         matchdict = {'id':linematch.group('type')}
-        
-  #       # The type is something other than 'task', so indicate
-  #       # the part of the question we're about to access
-  #       else:
-  #         key = linematch.group('type').lower()
-      
-  #     else:
-  #       if key == 'task':
-
-  #         # 'task' lines are stored in a list
-  #         matchdict[key] = matchdict.get(key, [])
-  #         matchdict[key].append(line.strip()) if line.strip() != '' else None
-        
-  #       # key is something other than 'task', and the line is not empty or 
-  #       # a comment (begins with #). Value will be a single-line string.
-  #       elif not re.match(r"\n|^#.*", line):
-  #         matchdict[key] = line.strip()
-    
-  #   # Reached end of file, append final question dict
-  #   questions.append(matchdict) if matchdict else None
-  #   file.close()
-
-  #   return questions
 
 
 if __name__ == '__main__':

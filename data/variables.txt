@@ -44,3 +44,8 @@ Hint: You can add (using +) strings to concatenate, or merge, them.
 r"print\(fullName\)"
 --> Output
 r".*"
+
+--> Task 6
+This is a test. Type "Test". Only validates output.
+--> Output
+r"'Test'"
