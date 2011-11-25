@@ -125,9 +125,3 @@ class Teacher(object):
     else:
       tag = "N"
     return tag
-
-
-if __name__ == '__main__':
-  teach = Teacher('data/begtut.txt')
-  q = teach.next()
-  print(q.id, q.task, q.i, q.o, q.test)

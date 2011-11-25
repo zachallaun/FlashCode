@@ -52,7 +52,7 @@ def engine():
     console = CountedConsole()
     console.interact(banner)
 
-    # Removes the logfile and resets stdout/err/in. Necessary for multiple sessions.
+    # Removes the logfile. Necessary for multiple sessions.
     cleanup()
 
 def cleanup():
