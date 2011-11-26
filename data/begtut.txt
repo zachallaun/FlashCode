@@ -1,5 +1,16 @@
 # Python Beginner's Tutorial
 
+--> Task 7
+Take a look at that error. Errors may look complicated and intimidating,
+but they are very informative, and you'll see a lot of them while
+you're learning! To see a different error, try to find the length of
+a number as if it were a string.
+--> Input
+# len(4)
+r"len\(\d+\.?\d*\)"
+--> Output
+r"TypeError.*"
+
 --> Task 1
 ">>>" is your Python prompt. This means the Python interpreter is 
 ready to accept code. Try typing your name surrounded by quotes, 
@@ -60,14 +71,3 @@ r"\w+"
 --> Output
 # A NameError
 r"NameError.*"
-
---> Task 7
-Take a look at that error. Errors may look complicated and intimidating,
-but they are very informative, and you'll see a lot of them while
-you're learning! To see a different error, try to find the length of
-a number as if it were a string.
---> Input
-# len(4)
-r"len\(\d+\.?\d*\)"
---> Output
-r"TypeError.*"
