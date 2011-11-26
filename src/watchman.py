@@ -13,6 +13,7 @@ class Watchman(object):
   def __init__(self, log_fname, teacher, mode='w'):
     self.log = open(log_fname, mode)
     self.flash = FlashCode(log_fname, teacher) # implements after_write hook
+    self.err = False
 
   def __del__(self):
     self.log.close()
@@ -20,19 +21,23 @@ class Watchman(object):
   def write(self, data):
     """Called when data is passed to stdout/err. Writes this data to log and
     original stdout."""
-
     self.log.write(data)
     self.log.flush()
     sys.__stdout__.write(data)
     sys.__stdout__.flush()
     # Triggers input/output validation hook
-    self.flash.after_write()
+    self.flash.after_write(self.err)
+    self.err = False
 
   def readline(self):
     """Called when input is accepted from stdin"""
     s = sys.__stdin__.readline()
     self.log.write(s)
     self.log.flush()
+    try:
+      temp = eval(s)
+    except:
+      self.err = True
     return s
 
   def flush(self):

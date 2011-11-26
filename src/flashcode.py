@@ -38,19 +38,20 @@ class FlashCode(object):
     string = "\n\n{0} {1}\n".format(cyan("(FC)"), str(data))
     sys.__stdout__.write(string)
   
-  def after_write(self):
+  def after_write(self, err=False):
     """Primary hook. Called after a write to stdout/err."""
     # Update object's list of input and output
     self._parse_log()
     # Validate hook call through input/output
     if (self.changed and self.current) and self._validated():
-      # Set current question
       self.current = self.teacher.next()
       # Print next task, or if module is complete, inform user
       if self.current:
         self.sprint('\n'.join(self.current.task))
       else:
-        self.sprint("Congrats! You've finished this module.\nPress CTRL-d to choose another when you're ready.") 
+        self.sprint("Congratulations! You've finished this module.\nPress CTRL-d to choose another when you're ready.") 
+      if err:
+        sys.__stdout__.write('\n')
   
   ###
   # Private Methods
