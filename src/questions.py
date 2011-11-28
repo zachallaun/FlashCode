@@ -6,7 +6,6 @@ class Question(object):
 
   def __init__(self, qa):
     super(Question, self).__init__()
-    print(qa)
     self.id = qa['id']
     self.task = qa['task']
     self.test = qa['test']

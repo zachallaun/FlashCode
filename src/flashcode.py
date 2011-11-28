@@ -38,7 +38,7 @@ class FlashCode(object):
     string = "\n\n{0} {1}\n".format(cyan("(FC)"), str(data))
     sys.__stdout__.write(string)
   
-  def after_write(self, err=False):
+  def after_write(self):
     """Primary hook. Called after a write to stdout/err."""
     # Update object's list of input and output
     self._parse_log()
@@ -50,7 +50,7 @@ class FlashCode(object):
         self.sprint('\n'.join(self.current.task))
       else:
         self.sprint("Congratulations! You've finished this module.\nPress CTRL-d to choose another when you're ready.") 
-      if err:
+      if "Error" in self.output[-1]:
         sys.__stdout__.write('\n')
   
   ###
