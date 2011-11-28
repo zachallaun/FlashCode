@@ -1,0 +1,98 @@
+# Lists module
+
+--> Task 1
+A Python ||list|| is a very useful data type, allowing you to keep
+multiple values in a single data structure. To create a list, you
+surround comma separated values by ||[ ... ]||. Create a list containing
+the numbers 1, 2 and 3 by typing ||[1, 2, 3]||.
+--> Input
+r"\[.*\]"
+--> Output
+r"\[1, 2, 3\]"
+
+--> Task 2
+Like almost everything in Python, a list can be set to a variable. Set the
+previous list to the variable ||myList||. Afterwards, type ||myList|| to confirm
+its value.
+--> Input
+r"myList"
+--> Output
+r"\[1, 2, 3\]"
+
+--> Task 3
+While we all learned to count from 1, computers tend to count from 0. Lists are ordered, and
+each value of our list has a specific index. We can query a list using the notation 
+||list[index]||. Try to extract the first value of ||myList||. Remember that the first index 
+of a list is 0, not 1.
+--> Input
+r"myList\[0\]"
+--> Output
+r"1"
+
+--> Task 4
+This time, try to extract the third element of ||myList||. (Keep in mind, we're not 
+removing elements from the list; we're just peeking at them.)
+--> Input
+r"myList\[2\]"
+--> Output
+r"3"
+
+--> Task 5
+Querying the list by index like this returns the value at that index, as you've seen.
+We can easily set this value to a variable to use later. Try doing so with the number 2
+in ||myList||. Try typing ||myTwo = myList[1]||. Then type ||myTwo|| to see what happened.
+--> Input
+r"myTwo"
+--> Output
+r"2"
+
+--> Task 5
+Now you know a way of getting values from a list. Let's add some. To add a value to 
+the list, you can call the ||append()|| method on the list using dot notation, as in 
+||list.append(something)||, where ||something|| is the value you want to append to the 
+end of the list. Append the number ||4|| to ||myList||. (This wont return anything,
+so type ||myList|| after you append to make sure it worked.)
+--> Input
+r"myList"
+--> Output
+r"\[1, 2, 3, 4\]"
+
+--> Task 6
+Our list now has 4 elements in it. We know, however, that the fourth element actually has
+index 3. Let's see what happens if you query a list by an index that doesn't yet exist.
+Try typing ||myList[4]||.
+--> Input
+r"myList\[4\]"
+--> Output
+r"IndexError.*"
+
+--> Task 7
+That's why it's important to know that Python counts starting at 0! Now that you've
+seen the basics, we'll take a look at some new list methods (like ||list.append()||).
+To remove and return a value from a list, you can use the ||list.pop(index)|| method.
+The value at ||index|| will be removed from the list and returned to you. Pop out that
+4 you just appended to the list.
+--> Input
+r"myList.pop\(3\)"
+--> Output
+r"4"
+
+--> Task 8
+Your list only has 3 values in it now. (You can confirm this by passing it to ||len()||).
+So far, we've only inserted values into the end of the list. However, since Python counts from 0,
+we should too. Insert values into a list at a specific index with ||list.insert(index, value)||.
+Insert the number 0 into the front of ||myList||. Type ||myList|| after to confirm it worked.
+--> Input
+r"myList"
+--> Output
+r"\[0, 1, 2, 3\]"
+
+--> Task 9
+Our list currently contains a sequence of numbers. So far, we've entered them all manually.
+Here's a better way: ||myList2 = list(range(4))||. Try it, then compare both your lists for
+equivalence with ||==|| by typing ||myList == myList2||. If they're the same, Python will
+return ||True||.
+--> Input
+r"myList\s*==\s*myList2"
+--> Output
+r"True"
