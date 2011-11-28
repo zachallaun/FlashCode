@@ -6,6 +6,7 @@ class Question(object):
 
   def __init__(self, qa):
     super(Question, self).__init__()
+    print(qa)
     self.id = qa['id']
     self.task = qa['task']
     self.test = qa['test']
@@ -48,7 +49,7 @@ class Teacher(object):
     read = re.compile(r"""
                       \-\->\s*          # Match an indicator
                       (?P<type>         # Allow access by .group('type')
-                      ((T|t)ask\s*\d+)| # Match "Task 12", upper/lower case, or
+                      ((T|t)ask\s*(\d+)?)| # Match "Task 12", upper/lower case, or
                       ((I|i)nput)|      # Match "Input", or
                       ((O|o)utput)|     # Match "Output", upper/lower case, or
                       ((T|t)est))       # Match "Test"
@@ -62,6 +63,7 @@ class Teacher(object):
       with open(q_fname) as file:
         state = N
         qdict = {}
+        taskid = 1
         for line in file:
           line = line.strip()
           tag = self._get_tag(line, read)
@@ -70,7 +72,8 @@ class Teacher(object):
           if state == N:
             if tag == "Q":
               Questions.append(qdict) if qdict else None
-              qdict = {'id': line.split()[-1]}
+              qdict = {'id': taskid}
+              taskid += 1
               question = []
               state = Q
             elif tag == "I":
