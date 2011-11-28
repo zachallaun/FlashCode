@@ -1,20 +1,9 @@
 # Python Beginner's Tutorial
 
---> Task 7
-Take a look at that error. Errors may look complicated and intimidating,
-but they are very informative, and you'll see a lot of them while
-you're learning! To see a different error, try to find the length of
-a number as if it were a string.
---> Input
-# len(4)
-r"len\(\d+\.?\d*\)"
---> Output
-r"TypeError.*"
-
 --> Task 1
-">>>" is your Python prompt. This means the Python interpreter is 
+||>>>|| is your Python prompt. This means the Python interpreter is 
 ready to accept code. Try typing your name surrounded by quotes, 
-like "Zach".
+like ||"Zach"||.
 --> Output
 # 'Zach' or "Zach"
 r"('[a-zA-Z]+')|(\"[a-zA-Z]\")"
@@ -26,7 +15,7 @@ r"(\"|').+(\"|')"
 See that? Python returned your name to you. What you created was 
 a string, which is a series of characters surrounded by single or
 double quotes. Your name has a length, too. Try passing your name to
-the function len(), as in len("name").
+the function ||len()||, as in ||len("name")||.
 --> Input
 # len("Zach") or len('Zach')
 r"len\((\"|').+(\"|')\)"
@@ -36,7 +25,7 @@ r"\d+"
 
 --> Task 3
 You can also do math through programming. To calculate 2+2, for instance,
-just type 2+2. Try it out.
+just type ||2+2||. Try it out.
 --> Input
 # 2 + 2 or 2+2
 r"2\s*\+\s*2"
@@ -45,7 +34,7 @@ r"2\s*\+\s*2"
 r"4"
 
 --> Task 4
-Try playing around some more. You can use * for multiplication and /
+Try playing around some more. You can use ||*|| for multiplication and ||/||
 for division.
 --> Input
 # 2/3 or 4 * 5 or 2/3 * 5
@@ -55,8 +44,8 @@ r"\d+\s*(\*|\/)\s*\d+"
 r"\d+\.*(\d+)*"
 
 --> Task 5
-Some of the math operators (like +, for instance) can be used in other
-ways as well. Multiply your name as a string by 5, as in: "Zach" * 5
+Some of the math operators (like ||+||, for instance) can be used in other
+ways as well. Multiply your name as a string by 5, as in: ||"Zach" * 5||
 --> Input
 r"('|\")(\w+)('|\")\s*\*\s*5"
 --> Output
@@ -71,3 +60,19 @@ r"\w+"
 --> Output
 # A NameError
 r"NameError.*"
+
+--> Task 7
+Take a look at that error. Errors may look complicated and intimidating,
+but they are very informative, and you'll see a lot of them while
+you're learning! To see a different error, try to find the length of
+a number as if it were a string.
+--> Input
+# len(4)
+r"len\(\d+\.?\d*\)"
+--> Output
+r"TypeError.*"
+
+# --> Task 8
+# Now that you have a small taste of Python, there's plenty more to do.
+# Make sure you check out the other modules to dive further into the language.
+# Let's finish out by 

@@ -1,4 +1,5 @@
 import re
+import src.str_format as c
 
 class Question(object):
   """Returns a Question object given a dictionary containing valid keys"""
@@ -64,6 +65,7 @@ class Teacher(object):
         for line in file:
           line = line.strip()
           tag = self._get_tag(line, read)
+          line = self._code_format(line, "||", c.GREY)
 
           if state == N:
             if tag == "Q":
@@ -111,6 +113,8 @@ class Teacher(object):
     return Questions
   
   def _get_tag(self, line, regex):
+    """Tags a line for use during parsing."""
+
     linematch = regex.match(line)
     if line.startswith('#'):
       tag = "C"
@@ -125,3 +129,22 @@ class Teacher(object):
     else:
       tag = "N"
     return tag
+  
+  def _code_format(self, line, tag, color):
+    """Formats a line during parsing given a line, a format tag, and a 
+    src.str_format color constant (or a valid ascii color string sequence)."""
+
+    inc = 0
+    lc = line
+    while tag in lc:
+      if inc % 2 == 0:
+        lc = lc.replace(tag, color, 1)
+      else:
+        lc = lc.replace(tag, c.COLOR_RESET, 1)
+      inc += 1
+    if inc % 2 == 0:
+      return lc
+    else:
+      print(c.red("Line format error (closing tag missing). The following line will not be formatted."))
+      print(c.red("LINE: " + line))
+      return line

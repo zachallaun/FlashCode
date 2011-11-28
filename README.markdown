@@ -33,6 +33,7 @@
     4
 
 #### Extensibility
-Modules live in `data/`, and are declared in `data/manifest.txt`. Format your manifest module declarations as seen in the file. Manifest supports full-line comments with `#`.
+Modules live in `data/`, and are declared in `data/manifest.txt`. Format your manifest module declarations as seen in the file. Manifest supports full-line comments with `#`. You can surround
+code with `||` for added formatting, as in "Try entering ||len(myName)||".
 
 Format modules as seen in `data/begtut.txt`. Regular expressions used for input and output validation. Currently, the validation hook will only run on some kind of output. (This is why the variables module requires declared variables to be printed.)
