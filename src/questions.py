@@ -66,7 +66,7 @@ class Teacher(object):
                 for line in file:
                     line = line.strip()
                     tag = self._get_tag(line, read)
-                    line = self._code_format(line, "||", c.GREY)
+                    line = self._code_format(line, "||", c.VPINK)
 
                     if state == N:
                         if tag == "Q":

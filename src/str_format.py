@@ -1,29 +1,37 @@
+"""
+Helper functions created for the purpose of string formatting.
+All functions accept a string, and return the same string surrounded
+by the appropriate ascii color sequences for that function.
+
+(The exception to this is _color(), which is only used in the
+construction of the main functions.)
+"""
+
 COLOR_RESET = '\033[0m'
 
+def _color(color):
+    return lambda string: color + string + COLOR_RESET 
+
 GREY = '\033[90m'
-def grey(string):
-    return GREY + string + COLOR_RESET
+grey = _color(GREY)
 
 RED = '\033[91m'
-def red(string):
-    return RED + string + COLOR_RESET
+red = _color(RED)
 
 GREEN = '\033[92m'
-def green(string):
-    return GREEN + string + COLOR_RESET
+green = _color(GREEN)
 
 YELLOW = '\033[93m'
-def yellow(string):
-    return YELLOW + string + COLOR_RESET
+yellow = _color(YELLOW)
 
 BLUE = '\033[94m'
-def blue(string):
-    return BLUE + string + COLOR_RESET
+blue = _color(BLUE)
 
 PINK = '\033[95m'
-def pink(string):
-    return PINK + string + COLOR_RESET
+pink = _color(PINK)
+
+VPINK = '\033[35m'
+vpink = _color(VPINK)
 
 CYAN = '\033[96m'
-def cyan(string):
-    return CYAN + string + COLOR_RESET
+cyan = _color(CYAN)
