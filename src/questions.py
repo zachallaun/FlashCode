@@ -46,13 +46,13 @@ class Teacher(object):
         validation, and testing considerations. Returns a list of dictionaries."""
 
         read = re.compile(r"""
-                                            \-\->\s*          # Match an indicator
-                                            (?P<type>         # Allow access by .group('type')
-                                            ((T|t)ask\s*(\d+)?)| # Match "Task 12", upper/lower case, or
-                                            ((I|i)nput)|      # Match "Input", or
-                                            ((O|o)utput)|     # Match "Output", upper/lower case, or
-                                            ((T|t)est))       # Match "Test"
-                                            """, re.VERBOSE)
+                            \-\->\s*          # Match an indicator
+                            (?P<type>         # Allow access by .group('type')
+                            ((T|t)ask\s*(\d+)?)| # Match "Task 12", upper/lower case, or
+                            ((I|i)nput)|      # Match "Input", or
+                            ((O|o)utput)|     # Match "Output", upper/lower case, or
+                            ((T|t)est))       # Match "Test"
+                            """, re.VERBOSE)
         
         # igNore, Question, Input, Output read states
         N, Q, I, O = range(4)

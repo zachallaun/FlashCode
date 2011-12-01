@@ -23,8 +23,8 @@ class FlashCode(object):
         self.changed = False
         self.empty_prompt = re.compile(r".+\(\d+\).+(>>>|\.\.\.)\s*$")
         self.full_prompt  = re.compile(r""" .+(\(\d+\))           # group 1, matches '(#)'
-                                                                                .+(>>>|\.\.\.)\s(.+)  # group 2, matches input
-                                                                        """, re.X)
+                                            .+(>>>|\.\.\.)\s(.+)  # group 2, matches input
+                                            """, re.X)
     
     def reset_io(self):
         self.input = []
@@ -40,6 +40,7 @@ class FlashCode(object):
     
     def after_write(self):
         """Primary hook. Called after a write to stdout/err."""
+        
         # Update object's list of input and output
         self._parse_log()
         # Validate hook call through input/output
