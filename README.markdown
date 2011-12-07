@@ -1,6 +1,9 @@
 # FlashCode
 ### Interactive Python Tutorial
 
+#### About
+This was created as a small academic project. Please do not expect any particular level of quality in this code. I am aware of a plethora of shortcomings and weak points, but anyone should feel free to point out shitty code if they feel compelled.
+
 #### Usage
     $ python3.2 run.py
     =======================================================================
